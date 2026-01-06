@@ -9,9 +9,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.yeditepe.finalexam.model.Task
 
 @Composable
-fun TaskItemScreen() {
+fun TaskItemScreen(task: Any) {
 
     // TODO 1: Create a mutable state to hold completion status (Boolean)
     // Initial value should be false
@@ -39,5 +40,18 @@ fun TaskItemScreen() {
 @Preview(showBackground = true)
 @Composable
 fun TaskItemPreview() {
-    // TODO: Call TaskItemScreen
+
+    @Preview(showBackground = true)
+    @Composable
+    fun TaskItemPreview() {
+        TaskItemScreen(
+            task = Task(
+                id = 1,
+                title = ".",
+                description = "..",
+                isCompleted = false
+            )
+        )
+    }
 }
+
