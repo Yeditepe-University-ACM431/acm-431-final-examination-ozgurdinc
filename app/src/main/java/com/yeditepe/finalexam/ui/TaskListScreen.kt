@@ -7,27 +7,29 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.yeditepe.finalexam.model.Task
 import com.yeditepe.finalexam.viewmodel.TaskViewModel
 
 @Composable
-fun TaskListScreen(viewModel: TaskViewModel = viewModel()) {
-
-    // TODO 3: Read task list from ViewModel
-
+fun TaskListScreen(
+    viewModel: TaskViewModel = viewModel(),
+    navController: NavHostController,
+    task: Task
+) {
+    val tasks = viewModel.tasks
     Column {
-        // TODO 4: Display task titles and completion status
-        // Use a simple Column or LazyColumn
+            TaskRow(task = task, navController = navController)
+        }
     }
 }
-
 @Composable
 fun TaskRow(task: Task, navController: NavController) {
-
     Text(
         text = task.title,
         modifier = Modifier.clickable {
-            // TODO 3: Navigate to detail screen with task title
+            navController.navigate("taskDetail/${task.title}")
         }
     )
 }
+
